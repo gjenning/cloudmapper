@@ -320,6 +320,8 @@ def collect(arguments):
             print(runner['Service'])
             print(session.get_available_regions(runner['Service']))
             # Only call universal services in default region
+
+            # GMJ - Look into further to understand
             # if runner["Service"] in universal_services:
             #     if region["RegionName"] != default_region:
             #         continue

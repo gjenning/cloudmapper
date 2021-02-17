@@ -326,12 +326,13 @@ def get_account_stats(account, all_resources=False):
 
 
 def get_us_east_1(account):
-    for region_json in get_regions(account):
-        region = Region(account, region_json)
-        if region.name == "us-east-1":
-            return region
-
-    raise Exception("us-east-1 not found")
+    return "us-gov-west-1"
+    # for region_json in get_regions(account):
+    #     region = Region(account, region_json)
+    #     if region.name == "us-east-1":
+    #         return region
+    #
+    # raise Exception("us-east-1 not found")
 
 
 def iso_date(d):
