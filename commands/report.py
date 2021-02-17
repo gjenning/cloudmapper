@@ -221,17 +221,18 @@ def report(accounts, config, args):
         },
     ]
 
-    for account in accounts:
-        account = Account(None, account)
-        print("  - {}".format(account.name))
-
-        account_stats = get_access_advisor_active_counts(account, args.max_age)
-
-        # Add to dataset
-        t["iam_active_data_set"][0]["data"].append(account_stats["users"]["active"])
-        t["iam_active_data_set"][1]["data"].append(account_stats["users"]["inactive"])
-        t["iam_active_data_set"][2]["data"].append(account_stats["roles"]["active"])
-        t["iam_active_data_set"][3]["data"].append(account_stats["roles"]["inactive"])
+    # GMJ - Commenting out because does not work with GovCloud
+    # for account in accounts:
+    #     account = Account(None, account)
+    #     print("  - {}".format(account.name))
+    #
+    #     account_stats = get_access_advisor_active_counts(account, args.max_age)
+    #
+    #     # Add to dataset
+    #     t["iam_active_data_set"][0]["data"].append(account_stats["users"]["active"])
+    #     t["iam_active_data_set"][1]["data"].append(account_stats["users"]["inactive"])
+    #     t["iam_active_data_set"][2]["data"].append(account_stats["roles"]["active"])
+    #     t["iam_active_data_set"][3]["data"].append(account_stats["roles"]["inactive"])
 
     print("* Getting public resource data")
     # TODO Need to cache this data as this can take a long time
