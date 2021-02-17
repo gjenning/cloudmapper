@@ -317,19 +317,21 @@ def collect(arguments):
         parameters = {}
         for region in region_list["Regions"]:
             dynamic_parameter = None
+            print(runner['Service'])
+            print(session.get_available_regions(runner['Service']))
             # Only call universal services in default region
-            if runner["Service"] in universal_services:
-                if region["RegionName"] != default_region:
-                    continue
-            elif region["RegionName"] not in session.get_available_regions(
-                runner["Service"]
-            ):
-                print(
-                    "  Skipping region {}, as {} does not exist there".format(
-                        region["RegionName"], runner["Service"]
-                    )
-                )
-                continue
+            # if runner["Service"] in universal_services:
+            #     if region["RegionName"] != default_region:
+            #         continue
+            # elif region["RegionName"] not in session.get_available_regions(
+            #     runner["Service"]
+            # ):
+            #     print(
+            #         "  Skipping region {}, as {} does not exist there".format(
+            #             region["RegionName"], runner["Service"]
+            #         )
+            #     )
+            #     continue
             handler = session.client(
                 runner["Service"], region_name=region["RegionName"],
                 config=Config(retries={'max_attempts': arguments.max_attempts})
