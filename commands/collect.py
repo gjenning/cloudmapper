@@ -210,7 +210,7 @@ def collect(arguments):
     make_directory("account-data/{}".format(account_dir))
 
     # Identify the default region used by global services such as IAM
-    default_region = os.environ.get("AWS_REGION", "us-east-1")
+    default_region = os.environ.get("AWS_REGION", "us-gov-west-1")
     if 'gov-' in default_region:
         default_region = 'us-gov-west-1'
     elif 'cn-' in default_region:
