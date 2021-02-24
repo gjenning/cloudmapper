@@ -291,8 +291,9 @@ def get_account_stats(account, all_resources=False):
                 continue
 
             # S3 buckets require special code to identify their location
+            # GMJ - Changing us-east-1 to us-gov-west-1 in the resoruce["name"] loop
             if resource["name"] == "S3 buckets":
-                if region.name == "us-east-1":
+                if region.name == "us-gov-west-1":
                     buckets = pyjq.all(
                         ".Buckets[].Name",
                         query_aws(region.account, "s3-list-buckets", region),
@@ -306,7 +307,7 @@ def get_account_stats(account, all_resources=False):
                         # Convert the value to a name.
                         # See https://docs.aws.amazon.com/general/latest/gr/rande.html#s3_region
                         if bucket_region is None:
-                            bucket_region = "us-east-1"
+                            bucket_region = "us-gov-west-1"
                         elif bucket_region == "EU":
                             bucket_region = "eu-west-1"
 
