@@ -293,6 +293,7 @@ def get_account_stats(account, all_resources=False):
             # S3 buckets require special code to identify their location
             # GMJ - Changing us-east-1 to us-gov-west-1 in the resoruce["name"] loop
             if resource["name"] == "S3 buckets":
+                print("region = {}".format(region.name))
                 if region.name == "us-gov-west-1":
                     buckets = pyjq.all(
                         ".Buckets[].Name",
