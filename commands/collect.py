@@ -317,8 +317,9 @@ def collect(arguments):
         parameters = {}
         for region in region_list["Regions"]:
             dynamic_parameter = None
+            # GMJ - These are printouts for debugging
             print(runner['Service'])
-            print(session.get_available_regions(runner['Service']))
+            print(session.get_available_regions(runner['Service'], allow_non_regional=True))
             # Only call universal services in default region
 
             # GMJ - Look into further to understand
